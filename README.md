@@ -1,105 +1,88 @@
-### Introduction
+# caching the Inverse of a Matrix in the R language - assignment 2
 
-This second programming assignment will require you to write an R
-function that is able to cache potentially time-consuming computations.
-For example, taking the mean of a numeric vector is typically a fast
-operation. However, for a very long vector, it may take too long to
-compute the mean, especially if it has to be computed repeatedly (e.g.
-in a loop). If the contents of a vector are not changing, it may make
-sense to cache the value of the mean so that when we need it again, it
-can be looked up in the cache rather than recomputed. In this
-Programming Assignment you will take advantage of the scoping rules of
-the R language and how they can be manipulated to preserve state inside
-of an R object.
+This project provides a simple way of creating a special class that can cache a matrix and its inverse.
+The inverse of the matrix is cached to avoid having to repeat this costly computation.
+The special matrix exposes getters and setters to access the cached matrix and its cached inverse.
 
-### Example: Caching the Mean of a Vector
+## Getting Started
 
-In this example we introduce the `<<-` operator which can be used to
-assign a value to an object in an environment that is different from the
-current environment. Below are two functions that are used to create a
-special object that stores a numeric vector and caches its mean.
+You know the deal; fork this repository to your github account and clone it to your local environment.
 
-The first function, `makeVector` creates a special "vector", which is
-really a list containing a function to
+1. Fork the GitHub https://github.com/waperez73/ProgrammingAssignment2
 
-1.  set the value of the vector
-2.  get the value of the vector
-3.  set the value of the mean
-4.  get the value of the mean
+2. Clone the project to your local account
+  
+    - git clone https://github.com/[your github account]/ProgrammingAssignment2
+    
+### Prerequisites
 
-<!-- -->
+You will need to download the latest version of R (this was developed using R version 3.4.3 (2017-11-30)).
 
-    makeVector <- function(x = numeric()) {
-            m <- NULL
-            set <- function(y) {
-                    x <<- y
-                    m <<- NULL
-            }
-            get <- function() x
-            setmean <- function(mean) m <<- mean
-            getmean <- function() m
-            list(set = set, get = get,
-                 setmean = setmean,
-                 getmean = getmean)
-    }
+You can download R here: 
 
-The following function calculates the mean of the special "vector"
-created with the above function. However, it first checks to see if the
-mean has already been calculated. If so, it `get`s the mean from the
-cache and skips the computation. Otherwise, it calculates the mean of
-the data and sets the value of the mean in the cache via the `setmean`
-function.
+Windows: https://cran.r-project.org/bin/windows/base/
 
-    cachemean <- function(x, ...) {
-            m <- x$getmean()
-            if(!is.null(m)) {
-                    message("getting cached data")
-                    return(m)
-            }
-            data <- x$get()
-            m <- mean(data, ...)
-            x$setmean(m)
-            m
-    }
+Mac OSx: https://cran.r-project.org/bin/macosx/
 
-### Assignment: Caching the Inverse of a Matrix
+If you really feel adventurous download RStudio fora more complete development environment.
 
-Matrix inversion is usually a costly computation and there may be some
-benefit to caching the inverse of a matrix rather than computing it
-repeatedly (there are also alternatives to matrix inversion that we will
-not discuss here). Your assignment is to write a pair of functions that
-cache the inverse of a matrix.
+https://www.rstudio.com/products/rstudio/download/#download
 
-Write the following functions:
+### Installing
 
-1.  `makeCacheMatrix`: This function creates a special "matrix" object
-    that can cache its inverse.
-2.  `cacheSolve`: This function computes the inverse of the special
-    "matrix" returned by `makeCacheMatrix` above. If the inverse has
-    already been calculated (and the matrix has not changed), then
-    `cacheSolve` should retrieve the inverse from the cache.
+1. Install R and make sure it is working
+2. Install Rtudio - if you feel you need it
 
-Computing the inverse of a square matrix can be done with the `solve`
-function in R. For example, if `X` is a square invertible matrix, then
-`solve(X)` returns its inverse.
+## Running the tests
 
-For this assignment, assume that the matrix supplied is always
-invertible.
+1. Change your working directory in R to where the project is cloned in your local system
+    
+    - setwd("c:/coursera/projects/ProgrammingAssignment2")
+    - run the dir() commands to verify
+    
+2. Source the file cachematrix.R
+  
+    - source("cachematrix.R")
+    - run the ls() command to verify 
+  
+  If the source() command returns an error repeat step 1.
 
-In order to complete this assignment, you must do the following:
+3. Create your matrix and save the special matrix object in a variable
+    
+    > m<-makeCacheMatrix(matrix(rnorm(20),4,4))
+    > cacheSolve(m)
 
-1.  Fork the GitHub repository containing the stub R files at
-    [https://github.com/rdpeng/ProgrammingAssignment2](https://github.com/rdpeng/ProgrammingAssignment2)
-    to create a copy under your own account.
-2.  Clone your forked GitHub repository to your computer so that you can
-    edit the files locally on your own machine.
-3.  Edit the R file contained in the git repository and place your
-    solution in that file (please do not rename the file).
-4.  Commit your completed R file into YOUR git repository and push your
-    git branch to the GitHub repository under your account.
-5.  Submit to Coursera the URL to your GitHub repository that contains
-    the completed R code for the assignment.
+    - Calling the cachesolve(m) returns the inverse of the matrix  (assuming the matrix is inversible)
+                  [,1]       [,2]        [,3]      [,4]
+      [1,] -12.8613362 -13.882941   7.8381458 -6.949864
+      [2,]   0.2339627   1.855456  -0.1921917  1.067387
+      [3,]  -9.7025174  -8.863176   6.1846731 -6.000537
+      [4,]  23.4755923  31.258603 -15.9312600 12.768391
+ 
+4. You can also access the special matrix by using the getters and setters 
+  
+  > m$get() - returns the original matrix
+  > m$set(matrix(rnorm(20),4,4)) - sets the value of the cached matrix
+  > m$setMSolve(matrix()) - set the inverse of the matrix
+  > m$getMSolve() - get the inverse of the matrix
 
-### Grading
+## Contributing
 
-This assignment will be graded via peer assessment.
+[https://github.com/rdpeng/ProgrammingAssignment2](https://github.com/rdpeng/ProgrammingAssignment2)
+
+## Versioning
+  
+  version 0.1
+
+## Authors
+
+Wellintton Perez with help from RD Peng (https://github.com/rdpeng/)
+
+
+## License
+
+Use it at you own risk this is code from a novice R programmer
+
+## Acknowledgments
+
+[https://github.com/rdpeng/ProgrammingAssignment2](https://github.com/rdpeng/ProgrammingAssignment2)
