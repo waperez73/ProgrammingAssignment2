@@ -53,12 +53,7 @@ https://www.rstudio.com/products/rstudio/download/#download
     - cacheSolve(m)
 
     - Calling the cachesolve(m) returns the inverse of the matrix  (assuming the matrix is invertible)
-    `              [,1]       [,2]        [,3]      [,4]
-      [1,] -12.8613362 -13.882941   7.8381458 -6.949864
-      [2,]   0.2339627   1.855456  -0.1921917  1.067387
-      [3,]  -9.7025174  -8.863176   6.1846731 -6.000537
-      [4,]  23.4755923  31.258603 -15.9312600 12.768391
-    `
+
 4. You can also access the special matrix by using the getters and setters 
   
   - m$get() - returns the original matrix
