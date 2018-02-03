@@ -1,4 +1,4 @@
-# caching the Inverse of a Matrix in the R language - assignment 2
+# Caching the Inverse of a Matrix in R - assignment 2
 
 This project provides a simple way of creating a special class that can cache a matrix and its inverse.
 The inverse of the matrix is cached to avoid having to repeat this costly computation.
@@ -49,22 +49,22 @@ https://www.rstudio.com/products/rstudio/download/#download
 
 3. Create your matrix and save the special matrix object in a variable
     
-    > m<-makeCacheMatrix(matrix(rnorm(20),4,4))
-    > cacheSolve(m)
+    - m<-makeCacheMatrix(matrix(rnorm(20),4,4))
+    - cacheSolve(m)
 
-    - Calling the cachesolve(m) returns the inverse of the matrix  (assuming the matrix is inversible)
-                  [,1]       [,2]        [,3]      [,4]
+    - Calling the cachesolve(m) returns the inverse of the matrix  (assuming the matrix is invertible)
+    `              [,1]       [,2]        [,3]      [,4]
       [1,] -12.8613362 -13.882941   7.8381458 -6.949864
       [2,]   0.2339627   1.855456  -0.1921917  1.067387
       [3,]  -9.7025174  -8.863176   6.1846731 -6.000537
       [4,]  23.4755923  31.258603 -15.9312600 12.768391
- 
+    `
 4. You can also access the special matrix by using the getters and setters 
   
-  > m$get() - returns the original matrix
-  > m$set(matrix(rnorm(20),4,4)) - sets the value of the cached matrix
-  > m$setMSolve(matrix()) - set the inverse of the matrix
-  > m$getMSolve() - get the inverse of the matrix
+  - m$get() - returns the original matrix
+  - m$set(matrix(rnorm(20),4,4)) - sets the value of the cached matrix
+  - m$setMSolve(matrix()) - set the inverse of the matrix
+  - m$getMSolve() - get the inverse of the matrix
 
 ## Contributing
 
