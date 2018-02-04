@@ -36,6 +36,15 @@ makeCacheMatrix <- function(matrx=matrix()) {
 
 }
 
+######################################################################################
+# Interface function to the calculate the inverse of the matrix creatred by the 
+# makeCacheMatrix function.
+#
+# Function: cacheSolve(instance of makeCacheMatrix)
+#
+#Author: Wellintton Perez 2018
+#
+######################################################################################
 cacheSolve <- function(x, ...) {
   
   matrix_solve <- x$getMSolve()
