@@ -6,7 +6,7 @@
 # Methods:
 #             $set(matrix()) - set value of the matrix
 #             $get() - gets the value of the matrix
-#             $setMSolve(matrix()) - set the inverse of the matrix
+#             $setMSolve(inverse of matrix()) - set the inverse of the matrix
 #             $getMSolve() - get the inverse of the matrix
 #
 # Interface:  cacheSolve(makeCacheMatrix,...)
@@ -41,7 +41,6 @@ cacheSolve <- function(x, ...) {
   matrix_solve <- x$getMSolve()
   
   if(!is.null(matrix_solve)) {
-    message("getting cached data")
     return(matrix_solve)
   }
   
