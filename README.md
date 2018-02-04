@@ -24,7 +24,7 @@ Windows: https://cran.r-project.org/bin/windows/base/
 
 Mac OSx: https://cran.r-project.org/bin/macosx/
 
-If you really feel adventurous download RStudio fora more complete development environment.
+If you really feel adventurous download RStudio for a more complete development environment.
 
 https://www.rstudio.com/products/rstudio/download/#download
 
@@ -37,7 +37,7 @@ https://www.rstudio.com/products/rstudio/download/#download
 
 1. Change your working directory in R to where the project is cloned in your local system
     
-    - setwd("c:/coursera/projects/ProgrammingAssignment2")
+    - Example: setwd("c:/coursera/projects/ProgrammingAssignment2")
     - run the dir() commands to verify
     
 2. Source the file cachematrix.R
@@ -71,7 +71,7 @@ https://www.rstudio.com/products/rstudio/download/#download
 
 ## Authors
 
-Wellintton Perez with help from RD Peng (https://github.com/rdpeng/)
+Wellintton Perez with help from (https://github.com/rdpeng/ProgrammingAssignment2)
 
 
 ## License

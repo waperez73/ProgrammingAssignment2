@@ -2,14 +2,14 @@
 # Description: the function takes a single parameter containing a matrix.  The matrix
 # is cached in global memory.   
 #
-# Class: makeCacheMatrix(matrix())
+# Class: makeCacheMatrix(m=matrix())
 # Methods:
-#             $set(matrxi()) - set value of the matrix
+#             $set(matrix()) - set value of the matrix
 #             $get() - gets the value of the matrix
 #             $setMSolve(matrix()) - set the inverse of the matrix
 #             $getMSolve() - get the inverse of the matrix
 #
-# Interface:  cacheSolve(makeCacheMatrix())
+# Interface:  cacheSolve(makeCacheMatrix,...)
 #
 #Author: Wellintton Perez 2018
 #
