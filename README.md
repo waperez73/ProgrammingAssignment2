@@ -1,4 +1,4 @@
-# Caching the Inverse of a Matrix in R - assignment 2
+# Caching the Inverse of a Matrix in R - Programming Assignment 2
 
 This project provides a simple way of creating a special class that can cache a matrix and its inverse.
 The inverse of the matrix is cached to avoid having to repeat this costly computation.
